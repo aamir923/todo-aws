@@ -3,6 +3,7 @@ import { useAuthenticator } from '@aws-amplify/ui-react';
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 
+
 const client = generateClient<Schema>();
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
   }, []);
 
   function createTodo() {
-    client.models.Todo.create({ title: window.prompt("Todo content") });
+    client.models.Todo.create({ content: window.prompt("Todo content") });
   }
 
     
@@ -31,7 +32,7 @@ function App() {
         {todos.map((todo) => (
           <li 
             onClick={() => deleteTodo(todo.id)}
-            key={todo.id}>{todo.title}
+            key={todo.id}>{todo.content}
           </li>
         ))}
       </ul>
